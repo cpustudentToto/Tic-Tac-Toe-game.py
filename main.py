@@ -1,13 +1,13 @@
 import random
 
-
+#Definitions
 move = "iefvhubefvbhudsvdhu"
 winner = "no one"
 board = []
 for i in range(9):
     board += str(i + 1)
 
-
+#Creating a way to show the current board
 def showBoard():
     global board
     for k in range(0, 7, 3):
@@ -15,6 +15,7 @@ def showBoard():
             print(board[i + k], end = " ")
         print("")
 
+#Letting the player play a move and recording it on the board
 def playerMove():
     global board, move
     if winner == "no one":
@@ -23,6 +24,7 @@ def playerMove():
             move = input("please make a valid move: ")
         board[int(move) - 1] = "X"
 
+#Letting the computer generate a random move and recording it on the board
 def computerMove():
     global board, move
     if winner == "no one":
@@ -32,6 +34,7 @@ def computerMove():
         board[move] = "O"
         print("I play:", move + 1)
 
+#Checking if the player has won
 def checkForWinX():
     global winner
     if board[4] == "X":
@@ -70,7 +73,7 @@ def checkForWinX():
             if board[8] == "X":
                 winner = "X"
 
-
+#Checking if the computer has won
 def checkForWinO():
     global winner
     if board[4] == "O":
@@ -109,6 +112,7 @@ def checkForWinO():
             if board[8] == "O":
                 winner = "O"
 
+#Checking if it's a draw
 def checkForDraw():
     global board, winner
     xmoves = 0
@@ -118,7 +122,7 @@ def checkForDraw():
     if xmoves == 5 and winner == "no one":
         winner = "Draw"
 
-                
+#main loop
 print("Welcome to Tic-Tac-Toe!")
 showBoard()
 playerMove()
@@ -133,16 +137,10 @@ while winner == "no one":
     checkForWinX()
     checkForDraw()
 
-
+#game end message
 if winner == "O":
     print("Oh no. You lost")
 elif winner == "X":
     print("Great job. You won!")
 else:
     print("It's a draw")
-
-
-
-
-
-
